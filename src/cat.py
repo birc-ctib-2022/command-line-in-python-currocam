@@ -10,8 +10,6 @@ if not args:
 files_opener = map(open, args)
 for line_number, line in enumerate(itertools.chain.from_iterable(files_opener)):
     if '-n' in flags:
-        print(f"{line_number}\t{line}", sep='')
+        print(f"{line_number}\t{line}", end='')
     else:
         print(line, sep='')
-
-

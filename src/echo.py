@@ -20,15 +20,23 @@ def split_args(args: list[str]) -> tuple[list[str], list[str]]:
     return flags, rest
 
 
-flags, args = split_args(sys.argv[1:])
-if '-n' in flags:
-    end = ""
-else:
-    end = "\n"
+def check_flags(flags: list[str]) -> tuple[list[str], list[str]]:
+    if '-n' in flags:
+        end = ""
+    else:
+        end = "\n"
+    if '-n' in flags:
+        sep = ""
+    else:
+        sep = " "
+    return end, sep
 
-if '-n' in flags:
-    sep = ""
-else:
-    sep = " "
 
-print(sep.join(args), end=end)
+def main():
+    flags, args = split_args(sys.argv[1:])
+    end, sep = check_flags(flags)
+    print(sep.join(args), end=end)
+
+
+if __name__ == '__main__':
+    main()
